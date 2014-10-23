@@ -2,16 +2,34 @@
 <html>
 	<head>
 		<title>Aurora</title>
+		<link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" title="Style" type="text/css" media="screen" charset="utf-8">		
+<!-- 		<meta name="viewport" content="width=device-width, initial-scale=1"> -->
+		<meta name="viewport" content="width=device-width, user-scalable=no" />
+		<link rel="apple-touch-icon" href="{{url_for('static', filename='images/apple-touch-icon.png')}}">
 	</head>
 	<body>
-		<h1>{{monday_time}}</h1>
-<!-- 		<form name="input" action="/" method="post"> -->
-		<form>
-			<dl>
-				<dt>Monday</dt>
-				<dd><input type="time" name="monday_time" value="{{monday_time}}"></dd>
-			</dl>
-			<input type="submit">
-		</form>
+		<div id="page">
+			<h1>Aurora</h1>
+	<!-- 		<form name="input" action="/" method="post"> -->
+			<form>
+				<dl>
+					<dt>Monday</dt><dd><input type="time" id="monday_time" name="monday_time" value="" size="5"></dd>
+					<dt>Tuesday</dt><dd><input type="time" id="tuesday_time" name="tuesday_time" value="" size="5"></dd>
+					<dt>Wednesday</dt><dd><input type="time" id="wednesday_time" name="wednesday_time" value="" size="5"></dd>
+					<dt>Thursday</dt><dd><input type="time" id="thursday_time" name="thursday_time" value="" size="5"></dd>
+					<dt>Friday</dt><dd><input type="time" id="friday_time"  name="friday_time" value="" size="5"></dd>
+					<dt>Saturday</dt><dd><input type="time" id="saturday_time" name="saturday_time" value="" size="5"></dd>
+					<dt>Sunday</dt><dd><input type="time" id="sunday_time" name="sunday_time" value="" size="5"></dd>
+				</dl>
+				<input type="submit" id="save_button" value="Update alarms">
+			</form>
+		</div>
+		<div>
+			<div id="toggle_lights_button">
+					Toggle lights
+			</div>
+		</div>
 	</body>
+	<script src="{{url_for('static', filename='js/jquery-2.1.1.min.js')}}" charset="utf-8"></script>
+	<script src="{{url_for('static', filename='js/scripts.js')}}" charset="utf-8"></script>
 </html>

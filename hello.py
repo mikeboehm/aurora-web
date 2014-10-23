@@ -1,23 +1,45 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, json, jsonify, render_template
 app = Flask(__name__)
 
 @app.route("/")
-def hello():
-    monday_time = '07:00'
-    
-    return render_template('index.html', monday_time=monday_time)
+def index():
+	return render_template('index.html')
 
+@app.route("/get_settings")
+def get_settings():
+	fp = open('settings.json')
+	settings = json.load(fp)
+	return jsonify(settings)
+
+
+
+@app.route("/toggle_lights")
+def toggle_lights():
+	import pika
+	connection = pika.BlockingConnection(pika.ConnectionParameters(
+		host='localhost'))
+	channel = connection.channel()	
+	channel.queue_declare(queue='aurora')	
+	channel.basic_publish(exchange='',
+		routing_key='aurora',
+		body='Hello World!')
+	connection.close()
 
 @app.route("/update")
 def update():
-	alarms = {'monday': '07:00'}
+	alarms = {
+		0 : {
+			'time': '07:00',
+			'day': 'Monday',
+		}
+	}
 	settings = {'alarms' : alarms }
 # 	print settings
 	
 	return jsonify(settings);
 # 	f = open('settings.json', 'w')
-#     return "Hello World!"
+#		return "Hello World!"
 
 if __name__ == "__main__":
-    app.run(debug=True)
-# 	app.run(host='0.0.0.0')
+# 	app.run(debug=True)
+	app.run(host='0.0.0.0')
