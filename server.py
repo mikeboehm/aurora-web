@@ -24,6 +24,7 @@ def toggle_lights():
 		routing_key='aurora',
 		body='Hello World!')
 	connection.close()
+	return ""
 
 @app.route("/update")
 def update():
@@ -41,5 +42,5 @@ def update():
 #		return "Hello World!"
 
 if __name__ == "__main__":
-# 	app.run(debug=True)
-	app.run(host='0.0.0.0')
+	app.run(debug=True, host='aurora.local')
+# 	app.run(host='aurora.local')
