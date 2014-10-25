@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 import socket
-bonjour_address = socket.gethostname()
-
 from flask import Flask, json, jsonify, render_template, request, url_for
 from settings_manager import SettingsManager
 from messenger import Messenger
@@ -53,5 +51,15 @@ def update_alarms():
 	return "";
 
 if __name__ == "__main__":
+	# Generate hostname
+	bonjour_address = socket.gethostname()
+	# If IP address, use as is
+	try:
+		socket.inet_aton(bonjour_address)	
+	except socket.error:
+		# Otherwise make sure the address will work
+		if not bonjour_address.endswith('.local'):
+			bonjour_address += '.local'
+	
 	app.run(debug=True, host=bonjour_address)
 # 	app.run(host=bonjour_address)
