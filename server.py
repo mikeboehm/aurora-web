@@ -18,15 +18,10 @@ def get_settings():
 
 @app.route("/toggle_lights")
 def toggle_lights():
-	import pika
-	connection = pika.BlockingConnection(pika.ConnectionParameters(
-		host='localhost'))
-	channel = connection.channel()	
-	channel.queue_declare(queue='aurora')	
-	channel.basic_publish(exchange='',
-		routing_key='aurora',
-		body='Hello World!')
-	connection.close()
+	from messenger import Messenger
+	messenger = Messenger()
+	messenger.toggle_lights()
+
 	return ""
 
 @app.route("/update")
