@@ -1,7 +1,10 @@
+#!/usr/bin/env python
 import socket
 bonjour_address = socket.gethostname()
 
 from flask import Flask, json, jsonify, render_template
+from messenger import Messenger
+
 app = Flask(__name__)
 
 @app.route("/")
@@ -17,10 +20,8 @@ def get_settings():
 
 
 @app.route("/toggle_lights")
-def toggle_lights():
-	from messenger import Messenger
-	messenger = Messenger()
-	messenger.toggle_lights()
+def toggle_lights():	
+	Messenger().toggle_lights()
 
 	return ""
 
@@ -41,4 +42,4 @@ def update():
 
 if __name__ == "__main__":
 	app.run(debug=True, host=bonjour_address)
-# 	app.run(host='aurora.local')
+# 	app.run(host=bonjour_address)
