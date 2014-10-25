@@ -1,3 +1,6 @@
+import socket
+bonjour_address = socket.gethostname()
+
 from flask import Flask, json, jsonify, render_template
 app = Flask(__name__)
 
@@ -42,5 +45,5 @@ def update():
 #		return "Hello World!"
 
 if __name__ == "__main__":
-	app.run(debug=True, host='aurora.local')
+	app.run(debug=True, host=bonjour_address)
 # 	app.run(host='aurora.local')
