@@ -5,8 +5,16 @@ class SettingsManager(object):
 	
 	
 	def get_settings(self):
-		fp = open(self.settings_file, 'r')
-		settings = json.load(fp)
+		try:
+			fp = open(self.settings_file, 'r')
+			settings = json.load(fp)
+		except:
+			fp = open(self.settings_file + '.default', 'r')
+			settings = json.load(fp)
+			self.set_settings(settings)
+			
+			
+# 		settings = json.load(fp)
 		return settings
 	
 	def set_settings(self, settings):
