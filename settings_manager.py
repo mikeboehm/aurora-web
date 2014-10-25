@@ -12,14 +12,9 @@ class SettingsManager(object):
 			fp = open(self.settings_file + '.default', 'r')
 			settings = json.load(fp)
 			self.set_settings(settings)
-			
-			
-# 		settings = json.load(fp)
+
 		return settings
 	
 	def set_settings(self, settings):
 		fp = open(self.settings_file, 'w')
 		json.dump(settings, fp)
-# 		settings = json.load(fp)
-# 		return settings
-
