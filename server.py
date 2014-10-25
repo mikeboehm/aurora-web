@@ -2,7 +2,8 @@
 import socket
 bonjour_address = socket.gethostname()
 
-from flask import Flask, json, jsonify, render_template
+from flask import Flask, json, jsonify, render_template, request, url_for
+from settings_manager import SettingsManager
 from messenger import Messenger
 
 app = Flask(__name__)
@@ -13,11 +14,8 @@ def index():
 
 @app.route("/get_settings")
 def get_settings():
-	fp = open('settings.json')
-	settings = json.load(fp)
-	return jsonify(settings)
-
-
+	settings_manager = SettingsManager()
+	return jsonify(settings_manager.get_settings())
 
 @app.route("/toggle_lights")
 def toggle_lights():	
@@ -25,20 +23,34 @@ def toggle_lights():
 
 	return ""
 
-@app.route("/update")
-def update():
-	alarms = {
-		0 : {
-			'time': '07:00',
-			'day': 'Monday',
-		}
-	}
-	settings = {'alarms' : alarms }
-# 	print settings
+@app.route("/update_alarms", methods=['POST'])
+def update_alarms():
+	settings_manager = SettingsManager()
+	settings = settings_manager.get_settings()
+
+# 	print request.form
 	
-	return jsonify(settings);
-# 	f = open('settings.json', 'w')
-#		return "Hello World!"
+	alarms = settings['settings']['alarms']
+
+	if request.form['sunday_time']:
+		alarms['0']['time'] = request.form['sunday_time']
+	if request.form['monday_time']:
+		alarms['1']['time'] = request.form['monday_time']
+	if request.form['tuesday_time']:
+		alarms['2']['time'] = request.form['tuesday_time']
+	if request.form['wednesday_time']:
+		alarms['3']['time'] = request.form['wednesday_time']
+	if request.form['thursday_time']:
+		alarms['4']['time'] = request.form['thursday_time']
+	if request.form['friday_time']:
+		alarms['5']['time'] = request.form['friday_time']
+	if request.form['saturday_time']:
+		alarms['6']['time'] = request.form['saturday_time']
+	
+	settings['settings']['alarms'] = alarms
+
+	settings_manager.set_settings(settings)
+	return "";
 
 if __name__ == "__main__":
 	app.run(debug=True, host=bonjour_address)

@@ -24,7 +24,7 @@ $( document ).ready(function() {
 	});
 	
 	$("#save_button").click(function(){ 
-		$.post('/update', $('#alarm_form').serialize())
+		$.post('/update_alarms', $('#alarm_form').serialize())
 	});
 
 	
