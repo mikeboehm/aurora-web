@@ -20,11 +20,12 @@ $( document ).ready(function() {
 	});
 	
 	$("#toggle_lights_button").click(function(){ 
-// 		var button_colour = $("#toggle_lights_button").css( "background-color");
-// 		$("#toggle_lights_button").css( "background-color", "#e7e7e7");
-		$("#toggle_lights_button").fadeOut(100);
-		$("#toggle_lights_button").fadeIn(100);
 		$.get( "/toggle_lights");
 	});
+	
+	$("#save_button").click(function(){ 
+		$.post('/update', $('#alarm_form').serialize())
+	});
+
 	
 });
