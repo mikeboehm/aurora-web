@@ -2,31 +2,31 @@
 	"settings" : {
 		"alarms" : { 
 			"0" : {
-				"time": "07:00",
+				"time": "08:30",
 				"day": "Sunday"
 			},
 			"1" : {
-				"time": "07:01",
+				"time": "07:00",
 				"day": "Monday"
 			},
 			"2" : {
-				"time": "07:02",
+				"time": "07:00",
 				"day": "Tuesday"
 			},
 			"3" : {
-				"time": "07:03",
+				"time": "07:00",
 				"day": "Wednesday"
 			},
 			"4" : {
-				"time": "07:04",
+				"time": "07:00",
 				"day": "Thursday"
 			},
 			"5" : {
-				"time": "07:05",
+				"time": "07:00",
 				"day": "Friday"
 			},
 			"6" : {
-				"time": "07:06",
+				"time": "08:30",
 				"day": "Saturday"
 			}
 		}
