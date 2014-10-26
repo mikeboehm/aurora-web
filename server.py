@@ -61,5 +61,5 @@ if __name__ == "__main__":
 		if not bonjour_address.endswith('.local'):
 			bonjour_address += '.local'
 	
-	app.run(debug=True, host=bonjour_address)
+	app.run(debug=False, host=bonjour_address)
 # 	app.run(host=bonjour_address)
