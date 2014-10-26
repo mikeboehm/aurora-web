@@ -1,7 +1,8 @@
 import json
 class SettingsManager(object):
 	def __init__(self):
-		self.settings_file = './settings.json'
+		import sys
+		self.settings_file = sys.path[0] + '/settings.json'
 	
 	
 	def get_settings(self):
