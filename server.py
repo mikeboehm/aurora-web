@@ -21,33 +21,34 @@ def toggle_lights():
 
 	return ""
 
-@app.route("/update_alarms", methods=['POST'])
-def update_alarms():
+@app.route("/update_alarm", methods=['POST'])
+def update_alarm():
 	settings_manager = SettingsManager()
 	settings = settings_manager.get_settings()
 
 # 	print request.form
+
+	day_map = {
+		'sunday_time': '0',
+		'monday_time': '1',
+		'tuesday_time': '2',
+		'wednesday_time': '3',
+		'thursday_time': '4',
+		'friday_time': '5',
+		'saturday_time': '6',
+	}
 	
+	form_day_name = request.form['day']
+
 	alarms = settings['settings']['alarms']
-
-	if request.form['sunday_time']:
-		alarms['0']['time'] = request.form['sunday_time']
-	if request.form['monday_time']:
-		alarms['1']['time'] = request.form['monday_time']
-	if request.form['tuesday_time']:
-		alarms['2']['time'] = request.form['tuesday_time']
-	if request.form['wednesday_time']:
-		alarms['3']['time'] = request.form['wednesday_time']
-	if request.form['thursday_time']:
-		alarms['4']['time'] = request.form['thursday_time']
-	if request.form['friday_time']:
-		alarms['5']['time'] = request.form['friday_time']
-	if request.form['saturday_time']:
-		alarms['6']['time'] = request.form['saturday_time']
 	
-	settings['settings']['alarms'] = alarms
+	if form_day_name in day_map:
+		weekday_number = day_map[form_day_name]
+		alarms[weekday_number]['time'] = request.form['alarm_time']
+		
+		settings['settings']['alarms'] = alarms
+		settings_manager.set_settings(settings)
 
-	settings_manager.set_settings(settings)
 	return "";
 
 if __name__ == "__main__":
@@ -62,4 +63,3 @@ if __name__ == "__main__":
 			bonjour_address += '.local'
 	
 	app.run(debug=False, host=bonjour_address)
-# 	app.run(host=bonjour_address)
