@@ -61,6 +61,7 @@ body{
 /* 	background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,0,0.55) 56%, rgba(255,0,0,0.2) 100%); */
 	background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,65,0.55) 56%, rgba(255,255,0,0.4) 75%, rgba(255,0,0,0.2) 100%);
 	background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,65,1) 56%, rgba(255,255,0,1) 75%, rgba(255,0,0,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#95a4c7), color-stop(9%,#a5b2d1), color-stop(11%,#a5b2d1), color-stop(21%,#b7bfd7), color-stop(23%,#b9bfd7), color-stop(27%,#c1c5d9), color-stop(32%,#c5c7dc), color-stop(41%,#d6d4e1), color-stop(44%,#d9d6df), color-stop(47%,#d9d2d9), color-stop(49%,#dcd2d7), color-stop(55%,#ecded9), color-stop(59%,#f2dfd5), color-stop(69%,#fedebd), color-stop(74%,#fcdab3), color-stop(80%,#fed199), color-stop(88%,#fdb66d), color-stop(91%,#fdb465), color-stop(93%,#fbae5b), color-stop(96%,#fc9f51), color-stop(99%,#fc844c), color-stop(100%,#fb7f4a));
 /* 	background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(233,175,27,0.74) 35%, rgba(216,2,23,0.25) 100%); */
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -68,7 +69,6 @@ body{
 	padding: 0;
 	font-size: 22px;
 }
-
 
 #page {	
 	overflow: auto;
@@ -82,13 +82,14 @@ body{
 	text-align: center;
 	font-family: "HelveticaNeue-UltraLight"; 
 	font-weight: 300;
+	color: #ffe6ca;
 }
 
 button {
-	padding: 7px;
+	padding: 14px;
 	border: none;
 	margin: 0;
-/* 	border: 1px solid black; */
+/* 	border: 2px solid red; */
 	text-align: center;
 /* 	border-radius: 1px; */
 	width: 100%;
@@ -97,12 +98,12 @@ button {
 
 div.row {
 	padding: 3px;
-	border-bottom: 1px solid rgba(255,255,255,0.5);
+	border-bottom: 1px solid rgba(255,255,255,0.25);
 	overflow: auto;
 }
 
 label {
-	line-height: 1em;
+	line-height: 1.4em;
 	display: inline-block;
 	width: 70%;
 }
@@ -121,25 +122,13 @@ input[type="time"] {
 	margin: 0;
 }
 
-
-#save_button {
-	background-color: red;
-}
-
-#save_button span {
-}
-
-#save_button:active {
-	background-color: blue;
-}
-
-#save_button:active span {
-    -webkit-transform: translate(0, 4px);
-    -moz-transform: translate(0, 4px);
-    -o-transform: translate(0, 4px);
-    transform: translate(0, 4px);
+#toggle_lights_button_container {	
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	border-top: 2px solid rgba(0,0,0,0.1);
 }
 
 #toggle_lights_button {
-	background-color: rgba(255,0,0,0.5);
+	background-color: #ffe6ca;   
 }
