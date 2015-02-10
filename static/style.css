@@ -122,12 +122,13 @@ input[type="time"] {
 	margin: 0;
 }
 
-#toggle_lights_button_container {
+#toggle_lights_button_container {	
 	position: fixed;
 	bottom: 0;
 	width: 100%;
+	border-top: 2px solid rgba(0,0,0,0.1);
 }
 
 #toggle_lights_button {
-    background-color: #ffe6ca;
+	background-color: #ffe6ca;   
 }
