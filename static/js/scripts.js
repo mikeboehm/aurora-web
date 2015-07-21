@@ -21,6 +21,14 @@ $( document ).ready(function() {
 	
 	$("#toggle_lights_button").click(function(){ 
 		$.get( "/toggle_lights");
+		$oldColour = $(this).css('color');
+		
+		$min = 0;
+		$max = 255;
+		$red = Math.floor(Math.random() * ($max - $min + 1)) + $min;
+		$green = Math.floor(Math.random() * ($max - $min + 1)) + $min;
+		$blue = Math.floor(Math.random() * ($max - $min + 1)) + $min;
+		$(this).css('color', 'rgb(' + $red + ', ' + $green + ', ' + $blue + ')');
 	});
 	
 	$('input[type=time]').blur(function(){
