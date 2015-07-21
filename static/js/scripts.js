@@ -23,9 +23,8 @@ $( document ).ready(function() {
 		$.get( "/toggle_lights");
 	});
 	
-	$("#save_button").click(function(){ 
-		$.post('/update_alarms', $('#alarm_form').serialize())
+	$('input[type=time]').blur(function(){
+    	var data = {'day': this.id, 'alarm_time': this.value};
+    	$.post("/update_alarm", data);
 	});
-
-	
 });
